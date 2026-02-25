@@ -1,11 +1,11 @@
-import crypto from "crypto";
-import User from "./models/User.js";
+import "./config/env.js";
 
-import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import cors from "cors";
 import connectDB from "./config/db.js";
+
+import crypto from "crypto";
+import User from "./models/User.js";
 
 
 import authRoutes from './routes/authRoutes.js'

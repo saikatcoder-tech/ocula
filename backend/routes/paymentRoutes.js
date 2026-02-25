@@ -5,14 +5,20 @@ import protect from "../middleware/authMiddleware.js"
 
 const router = express.Router();
 
+export const getRazorpayInstance = () => {
+  return new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET
+  });
+};
+
 
 //Create Order
 router.post("/create-order", protect, async(req,res) => {
 
-    const razorpay = new Razorpay({
-        key_id: process.env.RAZORPAY_KEY_ID,
-        key_secret: process.env.RAZORPAY_KEY_SECRET
-    });
+    const razorpay = getRazorpayInstance();
+
+    console.log("KEY:", process.env.RAZORPAY_KEY_ID);
 
     try {
         //getting the package
@@ -24,7 +30,7 @@ router.post("/create-order", protect, async(req,res) => {
         //making credits and amount
         if(packageType === "basic") {
             credits = 2;
-            amount = 200; //20.00 in paise
+            amount = 200;
         }
         else if(packageType === "pro") {
             credits = 6;
@@ -61,8 +67,9 @@ router.post("/create-order", protect, async(req,res) => {
         })
 
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
-            message: error.message
+            message: error.message, 
         });
     }
 });
