@@ -18,8 +18,6 @@ router.post("/create-order", protect, async(req,res) => {
 
     const razorpay = getRazorpayInstance();
 
-    console.log("KEY:", process.env.RAZORPAY_KEY_ID);
-
     try {
         //getting the package
         const { packageType } = req.body;
