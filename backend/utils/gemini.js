@@ -17,10 +17,18 @@ const generateWithGemini = async (inputText) => {
       IMPORTANT INSTRUCTIONS:
       - Respond ONLY with valid raw JSON.
       - Do NOT include markdown.
-      - Do NOT wrap the response in markdown code blocks.
+      - Do NOT wrap the response in code blocks.
       - Do NOT include explanations before or after the JSON.
-      - Ensure the output is strictly parseable by JSON.parse().
-      - Keep the total response under 1000 words.
+      - The response must start with { and end with }.
+      - All keys must use double quotes.
+      - All string values must use double quotes.
+      - Ensure every top-level field is separated by a comma.
+      - Do NOT include trailing commas.
+      - Ensure all objects are properly closed with }.
+      - Ensure all arrays are properly closed with ].
+      - Do NOT truncate the JSON output.
+      - The output must be fully parseable using JSON.parse() without modification.
+      - Keep the total response under 1200 words.
 
       Use the following exact structure:
 

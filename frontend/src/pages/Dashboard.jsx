@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchUser();
-  })
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem("token");

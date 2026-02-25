@@ -49,10 +49,23 @@ const Home = () => {
       ) : (
         <div className="space-y-8">
           {generations.map((item, index) => {
-            const data =
-              typeof item.aiResponse === "string"
-                ? JSON.parse(item.aiResponse)
-                : item.aiResponse;
+
+            // const data =
+            //   typeof item.aiResponse === "string"
+            //     ? JSON.parse(item.aiResponse)
+            //     : item.aiResponse;
+
+            let data = null;
+              if (typeof item.aiResponse === "string") {
+                try {
+                  data = JSON.parse(item.aiResponse);
+                } catch (err) {
+                  console.log("Broken AI response for:", item._id);
+                  data = null;
+                }
+              } else {
+                data = item.aiResponse;
+              }
 
             return (
               <div
