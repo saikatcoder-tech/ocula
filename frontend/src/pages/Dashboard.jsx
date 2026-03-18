@@ -107,6 +107,13 @@ const Dashboard = () => {
         </div>
       </div>
 
+      {!collapsed && (
+        <div
+          onClick={() => setCollapsed(true)}
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+        />
+      )}
+
       {/* ================= MAIN AREA ================= */}
       <div className="flex-1 flex flex-col bg-[#0E1424]">
 
