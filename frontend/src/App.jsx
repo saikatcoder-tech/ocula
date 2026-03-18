@@ -5,7 +5,6 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Generate from "./pages/Generate";
 import Credits from "./pages/Credits";
-import Profile from "./pages/Profile";
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -25,7 +24,6 @@ function App() {
         <Route index element={<Home />} />
         <Route path="generate" element={<Generate />} />
         <Route path="credits" element={<Credits />} />
-        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

@@ -44,14 +44,14 @@ const Login = () => {
       <div className="w-full max-w-6xl flex rounded-2xl overflow-hidden shadow-2xl relative z-10">
 
         {/* LEFT SIDE - LOGIN CARD */}
-        <div className="flex-1 flex items-center justify-center p-16">
-          <div className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-10 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
+        <div className="flex-1 flex items-center justify-center p-5 md:p-16">
+          <div className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl px-5 md:px-10 py-10 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
             
-            <h2 className="text-3xl font-semibold text-white text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold text-white text-center">
               Welcome Back
             </h2>
 
-            <p className="text-gray-400 text-center mt-2 text-sm">
+            <p className="text-gray-400 text-center mt-2 text-xs md:text-sm">
               Log in to continue building intelligent AI tools
             </p>
 
@@ -67,7 +67,7 @@ const Login = () => {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-transparent border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/40 transition duration-300"
+                  className="w-full px-3 py-3 md:px-4 bg-transparent border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/40 transition duration-300"
                 />
               </div>
 
@@ -81,7 +81,7 @@ const Login = () => {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-transparent border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 transition duration-300"
+                  className="w-full px-3 py-3 md:px-4 bg-transparent border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/40 transition duration-300"
                 />
               </div>
 

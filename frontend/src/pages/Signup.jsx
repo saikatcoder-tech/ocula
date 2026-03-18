@@ -52,8 +52,8 @@ const Signup = () => {
         </div>
 
         {/* RIGHT SIDE - SIGNUP CARD */}
-        <div className="flex-1 flex items-center justify-center p-8">
-          <div className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-10 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
+        <div className="flex-1 flex items-center justify-center p-5 md:p-16">
+          <div className="w-full max-w-md backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl px-5 py-10 md:p-10 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
             
             <h2 className="text-3xl font-semibold text-white text-center">
               Create Account

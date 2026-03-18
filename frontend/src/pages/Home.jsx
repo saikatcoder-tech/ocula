@@ -26,7 +26,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-white px-6 md:px-20 py-16">
+    <div className="min-h-screen bg-[#0B0F19] text-white px-6 md:px-20 py-10">
       
       {/* Header */}
       <div className="mb-16">
@@ -35,7 +35,7 @@ const Home = () => {
             AI Architecture Generations
           </span>
         </h1>
-        <p className="text-gray-400 mt-4 max-w-2xl">
+        <p className="text-gray-400 mt-4 max-w-2xl text-sm md:text-base">
           Explore structured AI system blueprints generated for scalable,
           production-grade platforms.
         </p>
@@ -47,7 +47,7 @@ const Home = () => {
       ) : generations.length === 0 ? (
         <p className="text-gray-500">No generations available.</p>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-4 md:space-y-8">
           {generations.map((item, index) => {
 
             // const data =
@@ -75,13 +75,13 @@ const Home = () => {
                 {/* Card Header */}
                 <div
                   onClick={() => toggleCard(index)}
-                  className="cursor-pointer p-6 flex justify-between items-center"
+                  className="cursor-pointer p-4 md:p-6 flex justify-between items-center"
                 >
                   <div>
                     <h2 className="text-lg font-semibold">
                       Generation #{generations.length - index}
                     </h2>
-                    <p className="text-gray-400 text-sm mt-1">
+                    <p className="text-gray-400 text-xs md:text-sm mt-1">
                       {item.inputText}
                     </p>
                   </div>
@@ -93,7 +93,7 @@ const Home = () => {
 
                 {/* Expandable Content */}
                 {openIndex === index && (
-                  <div className="px-6 pb-8 space-y-10 border-t border-white/10 pt-8">
+                  <div className="px-4 pb-8 space-y-10 border-t border-white/10 pt-8">
                     {Object.entries(data).map(([sectionKey, section]) => (
                       <div key={sectionKey}>
                         <h3 className="text-md font-semibold mb-2 capitalize text-[#7C3AED]">
@@ -104,7 +104,7 @@ const Home = () => {
                           {section.summary}
                         </p>
 
-                        <ul className="space-y-2 text-sm text-gray-300">
+                        <ul className="space-y-2 text-xs md:text-sm text-gray-300">
                           {section.bullets.map((bullet, i) => (
                             <li
                               key={i}

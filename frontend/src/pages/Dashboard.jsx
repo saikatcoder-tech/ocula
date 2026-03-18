@@ -1,53 +1,63 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   LayoutDashboard,
   Sparkles,
   Coins,
-  User,
   LogOut,
   PanelLeftClose,
   PanelLeftOpen,
 } from "lucide-react";
 
-
-import { useContext } from "react";
 import { UserContext } from "../components/userContext";
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {user, fetchUser} = useContext(UserContext)
+  const { user, fetchUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchUser();
-  }, [])
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
-  }
+  };
 
   return (
-    <div className="flex h-screen bg-[#0B0F19] text-white overflow-hidden">
+    <div className="flex h-screen bg-[#0B0F19] text-white md:overflow-hidden overflow-auto">
 
       {/* ================= SIDEBAR ================= */}
       <div
-        className={`relative flex flex-col justify-between
+        className={`
+        flex flex-col justify-between
         backdrop-blur-xl bg-white/5 border-r border-white/10
         transition-all duration-300 ease-in-out
-        ${collapsed ? "w-20" : "w-64"}
+
+        ${collapsed ? "w-20 md:w-20" : "w-64 md:w-64"}
+
+        /* MOBILE */
+        fixed md:relative top-0 left-0 h-screen md:h-auto
+        ${collapsed ? "-translate-x-full md:translate-x-0" : "translate-x-0"}
+
+        z-50
         `}
       >
         {/* Logo + Toggle */}
         <div>
           <div className="flex items-center justify-between px-6 h-16">
-            {!collapsed && (
-              <h1 className="text-lg font-semibold tracking-wide">
-                AI Ocula
-              </h1>
-            )}
+            <h1
+              className={`
+                text-lg font-semibold tracking-wide
+                transition-all duration-300
+                whitespace-nowrap
+                ${collapsed ? "opacity-0 w-0 overflow-hidden" : "opacity-100 w-auto"}
+              `}
+            >
+              AI Ocula
+            </h1>
             <button
               onClick={() => setCollapsed(!collapsed)}
               className="text-gray-400 hover:text-white transition cursor-pointer"
@@ -81,18 +91,13 @@ const Dashboard = () => {
               label="Credits"
               collapsed={collapsed}
             />
-            <NavItem
-              to="profile"
-              icon={<User size={20} />}
-              label="Profile"
-              collapsed={collapsed}
-            />
           </nav>
         </div>
 
         {/* Logout */}
         <div className="px-3 pb-6">
-          <button onClick={handleLogout}
+          <button
+            onClick={handleLogout}
             className="flex items-center gap-3 w-full px-4 py-3 rounded-lg
             text-red-400 hover:bg-red-500/10 transition cursor-pointer"
           >
@@ -105,46 +110,53 @@ const Dashboard = () => {
       {/* ================= MAIN AREA ================= */}
       <div className="flex-1 flex flex-col bg-[#0E1424]">
 
-        {/* Top Bar (Clean Minimal) */}
+        {/* Top Bar */}
         <div className="h-16 border-b border-white/10 flex items-center justify-between px-8">
 
-          <h2 className="text-lg font-medium tracking-wide">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setCollapsed(false)}
+            className="md:hidden text-white text-xl"
+          >
+            ☰
+          </button>
+
+          <h2 className="hidden md:block text-lg font-medium tracking-wide">
             Welcome Back {user?.name?.split(" ")[0]}👋
           </h2>
 
           {/* Profile */}
           <div className="flex items-center gap-6">
 
-            {/* 🔥 Credits Badge */}
+            {/* Credits */}
             <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
-                <span className="text-xs text-gray-400">Credits</span>
-                <span className="text-sm font-semibold text-purple-400">
-                  {user?.credits}
-                </span>
+              <span className="text-xs text-gray-400">Credits</span>
+              <span className="text-sm font-semibold text-purple-400">
+                {user?.credits}
+              </span>
             </div>
 
-            {/* Profile Section */}
+            {/* Profile */}
             <div className="flex items-center gap-4">
-                <div className="text-right hidden md:block">
+              <div className="text-right hidden md:block">
                 <p className="text-sm font-medium">{user?.name}</p>
                 <p className="text-xs text-gray-400">Free Plan</p>
-                </div>
+              </div>
 
-                <div className="w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center text-sm font-semibold">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center text-sm font-semibold">
                 {user?.name
-                ?.split(" ")
-                .map(word => word[0])
-                .join("")
-                .toUpperCase()}
-                </div>
+                  ?.split(" ")
+                  .map((word) => word[0])
+                  .join("")
+                  .toUpperCase()}
+              </div>
             </div>
-
-            </div>
+          </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-8 overflow-y-auto">
-          <Outlet/>
+        <div className="flex-1 p-4 overflow-y-auto">
+          <Outlet />
         </div>
       </div>
     </div>
@@ -152,7 +164,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
 
 /* ================= NavItem ================= */
 
@@ -175,11 +186,16 @@ const NavItem = ({ to, icon, label, collapsed, end }) => {
         {icon}
       </div>
 
-      {!collapsed && (
-        <span className="text-sm font-medium tracking-wide">
-          {label}
-        </span>
-      )}
+      <span
+  className={`
+    text-sm font-medium tracking-wide
+    transition-all duration-200
+    whitespace-nowrap
+    ${collapsed ? "opacity-0 w-0 overflow-hidden" : "opacity-100 w-auto ml-2"}
+  `}
+>
+  {label}
+</span>
     </NavLink>
   );
 };

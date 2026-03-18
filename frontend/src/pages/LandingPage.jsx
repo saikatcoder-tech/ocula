@@ -54,7 +54,7 @@ export default function LandingPage() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-7xl md:text-8xl font-black leading-tight"
+          className="text-4xl md:text-8xl font-black leading-tight"
         >
           <span className="bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             AI-Native
@@ -63,19 +63,19 @@ export default function LandingPage() {
           System Architecture
         </motion.h1>
 
-        <p className="mt-8 text-gray-400 max-w-2xl text-lg">
+        <p className="mt-8 text-gray-400  max-w-2xl text-sm md:text-lg">
           Turn your clients startup idea into complete production-ready architecture.
         </p>
 
         <div className="mt-12 flex gap-6">
           <Link to='/dashboard/generate'>
-            <button className="cursor-pointer px-10 py-4 bg-linear-to-r from-purple-600 to-cyan-500 rounded-xl font-bold hover:scale-105 transition shadow-xl shadow-purple-600/40">
+            <button className="cursor-pointer px-6 py-3 md:px-10 md:py-4 bg-linear-to-r from-purple-600 to-cyan-500 rounded-xl font-bold hover:scale-105 transition shadow-xl shadow-purple-600/40">
               Generate
             </button>
           </Link>
           
           <Link to='/signup'>
-            <button className="cursor-pointer px-10 py-4 border border-white/20 rounded-xl hover:border-purple-500 transition">
+            <button className="cursor-pointer px-6 py-3 md:px-10 md:py-4 border border-white/20 rounded-xl hover:border-purple-500 transition">
               Sign Up
             </button>
           </Link>
@@ -84,12 +84,12 @@ export default function LandingPage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-      <section className="py-32 px-6 max-w-6xl mx-auto relative z-10">
-        <h2 className="text-4xl font-bold text-center mb-20">
+      <section className="py-10 px-6 max-w-6xl mx-auto relative z-10">
+        <h2 className="text-4xl font-bold text-center mb-15">
           How It Works
         </h2>
 
-        <div className="space-y-20">
+        <div className="space-y-10 md:space-y-15">
           {steps.map(
             (step, i) => (
               <motion.div
@@ -99,8 +99,8 @@ export default function LandingPage() {
                 transition={{ duration: 0.8 }}
                 className="bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl"
               >
-                <h3 className="text-2xl font-bold text-purple-400">{step.title}</h3>
-                <p className="mt-4 text-gray-400">
+                <h3 className="text-xl md:text-2xl font-bold text-purple-400">{step.title}</h3>
+                <p className="mt-4 text-gray-400 text-sm md:text-base">
                   {step.description}
                 </p>
               </motion.div>
@@ -121,9 +121,9 @@ export default function LandingPage() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="p-10 rounded-3xl bg-linear-to-br from-white/5 to-white/0 border border-white/10 backdrop-blur-xl"
+                className="flex items-center justify-center md:justify-start p-5 md:p-10 rounded-3xl bg-linear-to-br from-white/5 to-white/0 border border-white/10 backdrop-blur-xl"
               >
-                <h3 className="text-xl font-bold bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                <h3 className="text-lg md:text-xl font-bold bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                   {item}
                 </h3>
               </motion.div>
@@ -152,7 +152,7 @@ export default function LandingPage() {
 
       {/* ================= PRICING ================= */}
       <section className="py-32 px-6 max-w-7xl mx-auto relative z-10">
-        <h2 className="text-4xl font-bold text-center mb-20">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20">
           Pricing - Credits
         </h2>
 
@@ -164,12 +164,12 @@ export default function LandingPage() {
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center"
             >
               <h3 className="text-2xl font-bold mb-6">{plan}</h3>
-              <p className="text-4xl font-black mb-6">
+              <p className="text-3xl md:text-4xl font-black mb-6">
                 ₹{i === 0 ? "2" : i === 1 ? "4" : "10"}
               </p>
 
               <Link to='/dashboard/credits'>
-                <button className="cursor-pointer px-8 py-3 bg-linear-to-r from-purple-600 to-cyan-500 rounded-xl font-bold hover:scale-105 transition">
+                <button className="cursor-pointer px-5 py-3 md:px-8 md:py-3 bg-linear-to-r from-purple-600 to-cyan-500 rounded-xl font-bold hover:scale-105 transition">
                   Choose Plan
                 </button>
               </Link>
@@ -196,13 +196,13 @@ export default function LandingPage() {
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="py-40 text-center relative z-10">
-        <h2 className="text-5xl font-black">
+      <section className="py-30 text-center relative z-10">
+        <h2 className="text-3xl md:text-5xl font-black">
           Stop Planning. Start Building
         </h2>
 
         <Link to='/signup'>
-          <button className="cursor-pointer mt-12 px-12 py-5 rounded-2xl bg-linear-to-r from-purple-600 via-pink-500 to-cyan-500 font-bold text-lg hover:scale-110 transition shadow-2xl shadow-pink-500/40">
+          <button className="cursor-pointer mt-12 px-8 py-3 md:px-12 md:py-5 rounded-2xl bg-linear-to-r from-purple-600 via-pink-500 to-cyan-500 font-bold text-lg hover:scale-110 transition shadow-2xl shadow-pink-500/40">
             Get Free Credits
           </button>
         </Link>
